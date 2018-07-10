@@ -24,6 +24,7 @@ public class Categoria implements Serializable{
 	private List<Produto> produtos = new ArrayList<>();
 	
 	public Categoria() {
+	
 	}
 
 	public Categoria(Integer id, String nome) {
@@ -81,9 +82,5 @@ public class Categoria implements Serializable{
 			return false;
 		return true;
 	}
-
-
-	
-	
 	
 }
