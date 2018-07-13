@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.gabriel.modelagem.domain.Categoria;
 import com.gabriel.modelagem.domain.Cliente;
-import com.gabriel.modelagem.dto.CategoriaDTO;
 import com.gabriel.modelagem.dto.ClienteDTO;
 import com.gabriel.modelagem.dto.ClienteNewDTO;
 import com.gabriel.modelagem.services.ClienteService;
