@@ -20,6 +20,7 @@ import com.gabriel.modelagem.domain.PagamentoComCartao;
 import com.gabriel.modelagem.domain.Pedido;
 import com.gabriel.modelagem.domain.Produto;
 import com.gabriel.modelagem.domain.enums.EstadoPagamento;
+import com.gabriel.modelagem.domain.enums.Perfil;
 import com.gabriel.modelagem.domain.enums.TipoCliente;
 import com.gabriel.modelagem.repositories.CategoriaRepository;
 import com.gabriel.modelagem.repositories.CidadeRepository;
@@ -125,13 +126,20 @@ public class DBservice {
 		Cliente cli1 = new Cliente(null, "Maria Silva", "gabrielmorais96@gmail.com", "4571256568", TipoCliente.PESSOAFISICA, pe.encode("batata"));
 		cli1.getTelefones().addAll(Arrays.asList("5985656666", "9984551255"));
 		
+		Cliente cli2 = new Cliente(null, "Paulo Silva", "gabrielmorais964@gmail.com", "24429137129", TipoCliente.PESSOAFISICA, pe.encode("batata"));
+		cli2.addPerfil(Perfil.ADMIN);
+		cli2.getTelefones().addAll(Arrays.asList("984545876", "9845498165"));
+		
+		
 		Endereco ed1 = new Endereco(null, "Rua F", "405", "Apto 405", "Plano Piloto", "0548874212", cli1, cid1);
 		Endereco ed2 = new Endereco(null, "Rua J", "452", "Apto 445", "Centro", "598954979", cli1, cid2);
+		Endereco ed3 = new Endereco(null, "Rua H", "452", "Apto 987", "Centro", "598954979", cli2, cid2);
 		
 		cli1.getEnderecos().addAll(Arrays.asList(ed1, ed2));
+		cli2.getEnderecos().addAll(Arrays.asList(ed3));
 		
-		clienteRepository.saveAll(Arrays.asList(cli1));
-		enderecoRepository.saveAll(Arrays.asList(ed1, ed2));
+		clienteRepository.saveAll(Arrays.asList(cli1, cli2));
+		enderecoRepository.saveAll(Arrays.asList(ed1, ed2, ed3));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
