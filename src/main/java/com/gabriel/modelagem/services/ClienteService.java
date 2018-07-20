@@ -15,11 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gabriel.modelagem.domain.Cidade;
 import com.gabriel.modelagem.domain.Cliente;
 import com.gabriel.modelagem.domain.Endereco;
+import com.gabriel.modelagem.domain.enums.Perfil;
 import com.gabriel.modelagem.domain.enums.TipoCliente;
 import com.gabriel.modelagem.dto.ClienteDTO;
 import com.gabriel.modelagem.dto.ClienteNewDTO;
 import com.gabriel.modelagem.repositories.ClienteRepository;
 import com.gabriel.modelagem.repositories.EnderecoRepository;
+import com.gabriel.modelagem.security.UserSS;
+import com.gabriel.modelagem.services.exceptions.AuthorizationException;
 import com.gabriel.modelagem.services.exceptions.DataIntegrityException;
 import com.gabriel.modelagem.services.exceptions.ObjectNotFoundException;
 
@@ -36,9 +39,11 @@ public class ClienteService {
 	private EnderecoRepository enderecoRepository;
 	
 	public Cliente find(Integer id) {
-		
+		UserSS user = UserService.authenticated();
+		if (user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
+			throw new AuthorizationException("Acesso Negado");
+		}
 		Optional<Cliente> obj = repo.findById(id);
-		
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id:" + id + ", Tipo: " + Cliente.class.getName()));
 	}
 	
