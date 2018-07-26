@@ -9,7 +9,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.gabriel.modelagem.domain.Categoria;
 import com.gabriel.modelagem.domain.Cliente;
 import com.gabriel.modelagem.domain.ItemPedido;
 import com.gabriel.modelagem.domain.PagamentoComBoleto;
