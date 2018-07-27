@@ -14,9 +14,7 @@ import org.imgscalr.Scalr;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.core.util.BufferRecycler;
 import com.gabriel.modelagem.services.exceptions.FileException;
-import com.mysql.jdbc.Buffer;
 
 @Service
 public class ImageService {
